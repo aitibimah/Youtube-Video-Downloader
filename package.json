@@ -1,0 +1,27 @@
+{
+  "name": "Youtube-Video-Downloader",
+  "version": "1.0.0",
+  "description": "A Youtube Video Downloader",
+  "main": "nain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aitibimah/Youtube-Video-Downloader.git"
+  },
+  "keywords": [
+    "youtube",
+    "downalder"
+  ],
+  "author": "Aitibimah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aitibimah/Youtube-Video-Downloader/issues"
+  },
+  "homepage": "https://github.com/aitibimah/Youtube-Video-Downloader#readme",
+  "devDependencies": {
+    "electron": "^13.1.7"
+  }
+}
