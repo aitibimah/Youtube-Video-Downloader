@@ -2,7 +2,7 @@
   "name": "Youtube-Video-Downloader",
   "version": "1.0.0",
   "description": "A Youtube Video Downloader",
-  "main": "nain.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
