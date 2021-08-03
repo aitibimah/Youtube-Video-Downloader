@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
+    target: 'node',
     entry: './src/index.js',
     devtool: 'inline-source-map',
-    target: 'electron-renderer',
+    //target: 'electron-renderer',
     module: {
         rules: [
             {
@@ -37,10 +38,20 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.jsx']
     },
     output: {
-        filename: 'app.js',
+        publicPath: '/',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'build', 'js'),
+
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './',
+        port: 4172,
+    }
+
 };
+
+

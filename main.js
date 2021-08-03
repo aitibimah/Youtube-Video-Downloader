@@ -1,12 +1,14 @@
-const { BrowserWindow, app, ipcMain, Notification } = require('electron');
+
+
+const { BrowserWindow, app } = require('electron');
 const path = require('path');
 
 const isDev = !app.isPackaged;
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 1200,
-        height: 800,
+        width: 800,
+        height: 700,
         backgroundColor: "white",
         webPreferences: {
             nodeIntegration: false,
@@ -16,7 +18,7 @@ function createWindow() {
         }
     })
 
-    win.loadFile('index.html');
+    win.loadFile(`${__dirname}/src/index.html`);
 }
 
 if (isDev) {
@@ -25,8 +27,5 @@ if (isDev) {
     })
 }
 
-/* ipcMain.on('notify', (_, message) => {
-    new Notification({ title: 'Notifiation', body: message }).show();
-}) */
 
 app.whenReady().then(createWindow)
