@@ -29,6 +29,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^6.2.0",
+    "electron-react-devtools": "^0.5.3",
     "electron-reload": "^2.0.0-alpha.1",
     "lodash": "^4.17.21",
     "node-sass": "^6.0.1",

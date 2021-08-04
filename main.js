@@ -2,6 +2,7 @@
 
 const { BrowserWindow, app } = require('electron');
 const path = require('path');
+const os = require('os')
 
 const isDev = !app.isPackaged;
 
@@ -27,5 +28,15 @@ if (isDev) {
     })
 }
 
+/* const reactDevToolsPath = 'C:\Users\Bimah\AppData\Local\Google\Chrome\User Data\Default\Extensions\fmkadmapgofadopljbjfkapdkoienihi\4.14.0_0'
 
-app.whenReady().then(createWindow)
+console.log(reactDevToolsPath) */
+
+//app.whenReady().then(createWindow)
+
+
+/* app.whenReady().then(() => {
+    createWindow();
+    session.defaultSession.loadExtension(reactDevToolsPath)
+
+}) */
