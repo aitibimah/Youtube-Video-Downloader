@@ -1,8 +1,5 @@
-
-
-const { BrowserWindow, app } = require('electron');
+const { BrowserWindow, app, session } = require('electron');
 const path = require('path');
-const os = require('os')
 
 const isDev = !app.isPackaged;
 
@@ -20,6 +17,7 @@ function createWindow() {
     })
 
     win.loadFile(`${__dirname}/src/index.html`);
+
 }
 
 if (isDev) {
@@ -28,15 +26,20 @@ if (isDev) {
     })
 }
 
-/* const reactDevToolsPath = 'C:\Users\Bimah\AppData\Local\Google\Chrome\User Data\Default\Extensions\fmkadmapgofadopljbjfkapdkoienihi\4.14.0_0'
 
-console.log(reactDevToolsPath) */
+  app.on('ready', async () => {
+    
+    session.defaultSession.loadExtension(
+        '/home/mohamed/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.14.0_0', 
+        { allowFileAccess: true }
+        )
 
-//app.whenReady().then(createWindow)
+    session.defaultSession.loadExtension(
+            '/home/mohamed/.config/google-chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.2_0', 
+            { allowFileAccess: true }
+            )
+    
+  })
 
 
-/* app.whenReady().then(() => {
-    createWindow();
-    session.defaultSession.loadExtension(reactDevToolsPath)
-
-}) */
+app.whenReady().then(createWindow)

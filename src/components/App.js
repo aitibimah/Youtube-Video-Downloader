@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react'
+import store from '../reducers/index';
+import { Provider } from 'react-redux';
+import Content from './Content';
 
 
-export default function App() {
+class App extends Component {
 
+    render() {
     return (
 
-        <h1>I 33 33 125am App Component</h1>
-
-
+        <Provider store={store}>
+        <Content/>
+        </Provider>
     )
+
 }
+}
+
+
+export default App;
