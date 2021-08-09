@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import AreaSearch from './AreaSearch';
 import VideoList from './VideoList';
+import AreaSetting from './AreaSetting';
+import './app.scss';
 
-export default class Content extends Component {
+class Content extends Component {
     render() {
         return (
-            <div>
-            <AreaSearch/>
-            <VideoList/>
-            <button onClick={this.onClick}>clicMe</button>    
+            <div className="app">
+                <AreaSearch />
+                <VideoList />
+                <AreaSetting />
             </div>
         )
     }
 }
+
+
+
+
+export default (Content)

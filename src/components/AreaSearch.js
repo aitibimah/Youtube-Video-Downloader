@@ -5,9 +5,9 @@ import SearchField from './search/SearchField'
 export default class AreaSearch extends Component {
     render() {
         return (
-            <div>
-            <SearchField/>
-            <SearchButton/>
+            <div className="row areaSearch">
+                <SearchField />
+                <SearchButton />
             </div>
         )
     }

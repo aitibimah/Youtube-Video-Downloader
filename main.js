@@ -1,18 +1,22 @@
-const { BrowserWindow, app, session } = require('electron');
+const { BrowserWindow, app, session, ipcMain, dialog } = require('electron');
 const path = require('path');
+
+let win;
 
 const isDev = !app.isPackaged;
 
 function createWindow() {
-    const win = new BrowserWindow({
-        width: 800,
+    win = new BrowserWindow({
+        width: 650,
         height: 700,
+        resizable: false,
         backgroundColor: "white",
+        backgroundThrottling: false,
         webPreferences: {
-            nodeIntegration: false,
-            worldSafeExecuteJavaScript: true,
-            contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js')
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true,
+            preload: __dirname + '/preload.js'
         }
     })
 
@@ -27,19 +31,54 @@ if (isDev) {
 }
 
 
-  app.on('ready', async () => {
-    
-    session.defaultSession.loadExtension(
-        '/home/mohamed/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.14.0_0', 
-        { allowFileAccess: true }
-        )
+
+// for linux
+/* app.on('ready', async () => {
 
     session.defaultSession.loadExtension(
-            '/home/mohamed/.config/google-chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.2_0', 
-            { allowFileAccess: true }
-            )
-    
-  })
+        '/home/mohamed/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.14.0_0',
+        { allowFileAccess: true }
+    )
+
+    session.defaultSession.loadExtension(
+        '/home/mohamed/.config/google-chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.2_0',
+        { allowFileAccess: true }
+    )
+
+}) */
+
+
+
+app.on('ready', async () => {
+
+    session.defaultSession.loadExtension(
+        'C:/Users/Bimah/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.14.0_0/',
+        { allowFileAccess: true }
+    )
+
+    session.defaultSession.loadExtension(
+        'C:/Users/Bimah/AppData/Local/Google/Chrome/User Data/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.2_0/',
+        { allowFileAccess: true }
+    )
+
+})
 
 
 app.whenReady().then(createWindow)
+
+
+ipcMain.on('open-file-dialog', (event) => {
+    console.log('receive open file dialog')
+
+    dialog.showOpenDialog(win, {
+        properties: ['openFile', 'openDirectory']
+    }).then(result => {
+        console.log('here is :', result.filePaths)
+        win.webContents.send('selected-directory', result.filePaths);
+    }).catch(err => {
+        console.log(err)
+    })
+
+
+})
+

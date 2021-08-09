@@ -1,26 +1,7 @@
-import { combineReducers, createStore, applyMiddleware ,compose} from 'redux';
-import thunk from 'redux-thunk';
-const middleware = [thunk];
+import { combineReducers } from "redux";
+import videos_reducer from "./videos_reducer";
 
 
-import videosReducer from './videos_reducer';
-
-const rootReducer = combineReducers({
-  videos: videosReducer
+export default combineReducers({
+  app: videos_reducer,
 });
-
-
-const ReactReduxDevTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-
-
-const store = createStore(
-  rootReducer, 
-  {}, 
-  compose(
-  applyMiddleware(...middleware),
-  ReactReduxDevTools
-));
-
-export default store;

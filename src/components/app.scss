@@ -1,0 +1,95 @@
+.app {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .areaSearch {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .videoList::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+    background: #efefef;
+  }
+  .videoList::-webkit-scrollbar-thumb {
+    background-color: #b4afaf;
+    border-radius: 6px;
+  }
+
+  .videoList {
+    height: 440px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .itemVideo {
+      margin-bottom: 15px;
+
+      .small-img-row {
+        display: flex;
+        background: #efefef;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+
+        .small-img {
+          position: relative;
+
+          img {
+            width: 150px;
+          }
+        }
+
+        .detail-area {
+          margin-left: 20px;
+          margin-right: 20px;
+          font-size: 14px;
+          width: 100%;
+
+          .title {
+            margin-top: 5px;
+            font-weight: 500;
+            font-size: 15px;
+          }
+
+          .custom-checkbox {
+            font-size: 18px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-right: 12px;
+            margin-top: 5px;
+            .custom-control-label::before,
+            .custom-control-label::after {
+              top: 0.8rem;
+              width: 1.25rem;
+              height: 1.25rem;
+            }
+          }
+
+          .progressBar {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .areaSetting {
+    padding-top: 15px;
+
+    .choiceFormat {
+      margin-top: 10px;
+    }
+
+    .choiceQuality {
+      margin-top: 10px;
+    }
+
+    .saveButton {
+      margin-top: 10px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ export default class Image extends Component {
     render() {
         return (
             <div>
-            Image
+                <img src={this.props.image} />
             </div>
         )
     }
