@@ -1,6 +1,8 @@
 const { BrowserWindow, app, session, ipcMain, dialog } = require('electron');
 const path = require('path');
 
+const youtubedl = require('youtube-dl-exec')
+
 let win;
 
 const isDev = !app.isPackaged;
@@ -68,17 +70,76 @@ app.whenReady().then(createWindow)
 
 
 ipcMain.on('open-file-dialog', (event) => {
+
     console.log('receive open file dialog')
 
     dialog.showOpenDialog(win, {
         properties: ['openFile', 'openDirectory']
     }).then(result => {
-        console.log('here is :', result.filePaths)
-        win.webContents.send('selected-directory', result.filePaths);
+
+        event.returnValue = result.filePaths
+
     }).catch(err => {
         console.log(err)
     })
 
+})
+
+
+
+
+ipcMain.on('save-all', (event) => {
+
+
+    console.log('*********ytdl**************')
+
+
+
+
+    youtubedl(
+        'https://www.youtube.com/watch?v=axRAL0BXNvw',
+        {
+
+            dumpSingleJson: true
+
+        }).then(
+            output => {
+                event.returnValue = output
+                console.log(output)
+            }
+        ).catch(err => {
+            console.log(err)
+        })
+
+
+    //subprocess.stdout.pipe(fs.createWriteStream('stdout.json'))
+    //subprocess.stderr.pipe(fs.createWriteStream('stderr.json'))
+
+    //setTimeout(subprocess.cancel, 30000)
+
+
+    /* youtubedl(url, options, function (err, info) {
+        if (err) {
+            console.log('*********eroooor**************')
+            throw err
+        }
+        console.log('*********************************************************************')
+        console.log('id:', info.id)
+        console.log('title:', info.title)
+        console.log('url:', info.url)
+        console.log('thumbnail:', info.thumbnail)
+        console.log('description:', info.description)
+        console.log('filename:', info._filename)
+        console.log('format id:', info.format_id)
+        console.log('********************************************************************')
+    })
+ */
+
+
 
 })
+
+
+
+
 

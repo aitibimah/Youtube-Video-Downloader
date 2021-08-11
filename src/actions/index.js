@@ -1,18 +1,14 @@
 import { SET_VIDEOS_DIRECTORY } from "./types";
 
-export const chooseDirectory = () => async dispatch => {
+export const chooseDirectory = () => dispatch => {
+    const path = ipcRenderer.sendSync('open-file-dialog');
 
-    console.log('from fun')
-    ipcRenderer.send('open-file-dialog');
-    ipcRenderer.on('selected-directory', (event, path) => {
+    dispatch({
+        type: SET_VIDEOS_DIRECTORY,
+        payload: path
+    });
 
-        dispatch({
-            type: SET_VIDEOS_DIRECTORY,
-            payload: path
-        });
-
-    })
-
+    return path;
 
 };
 
@@ -21,6 +17,10 @@ export const chooseDirectory = () => async dispatch => {
 
 export const prinMessage = () => {
 
-    console.log('Hello Worlds')
+    console.log('Hello hh Worlds :=====> ')
+    console.log(ipcRenderer.sendSync('save-all'))
+
+
+
 
 };

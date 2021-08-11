@@ -12,34 +12,49 @@ class AreaSetting extends Component {
 
     constructor() {
         super();
-        this.state = {
-            directory: ''
-        };
         this.handeleClick = this.handeleClick.bind(this);
+        this.handeleChangeFormat = this.handeleChangeFormat.bind(this);
+        this.handeleChangeQuality = this.handeleChangeQuality.bind(this);
+
+
 
     }
 
+
     handeleClick() {
-        this.props.chooseDirectory()
 
-        this.setState({ directory: this.props.app.videoDirectory });
+        const dir = this.props.chooseDirectory()
+        this.props.setDirrctory(dir[0])
 
-        console.log(this.state)
+    }
+
+
+    handeleChangeFormat(format) {
+
+        this.props.setFormat(format)
+    }
+
+
+    handeleChangeQuality(quality) {
+
+        this.props.setQuality(quality)
 
     }
 
     render() {
 
+        const { saveDirrctory } = this.props.app
+
         return (
             <div className="areaSetting">
 
                 <div className="row">
-                    <SelectDirectory />
+                    <SelectDirectory saveDirrctory={saveDirrctory} />
                     <SelectButton handeleClick={this.handeleClick} />
                 </div>
                 <div className="row">
-                    <ChoiceFormat />
-                    <ChoiceQuality />
+                    <ChoiceFormat handeleChangeFormat={(e) => { this.handeleChangeFormat(e) }} />
+                    <ChoiceQuality handeleChangeQuality={(e) => { this.handeleChangeQuality(e) }} />
                     <SaveButton />
                 </div>
 

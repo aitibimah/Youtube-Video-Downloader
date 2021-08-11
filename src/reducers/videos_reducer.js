@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   videos: [],
-  videoDirectory: "",
+  saveDirrctory: "",
 };
 
 export default function (state = initialState, action) {
@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
     case SET_VIDEOS_DIRECTORY:
       return {
         ...state,
-        videoDirectory: action.payload[0]
+        saveDirrctory: action.payload[0]
       };
 
 
