@@ -52,6 +52,8 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "youtube-dl-exec": "^1.2.4"
+    "youtube-dl": "^3.5.0",
+    "youtube-dl-exec": "^1.2.4",
+    "ytdl-core": "^4.9.1"
   }
 }

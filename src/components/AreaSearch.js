@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import SearchButton from './search/SearchButton'
 import SearchField from './search/SearchField'
+import {getInfoVideo} from '../actions/index'
 
-export default class AreaSearch extends Component {
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+class AreaSearch extends Component {
 
 
     constructor() {
@@ -13,7 +17,10 @@ export default class AreaSearch extends Component {
     }
 
     handleClick() {
-        console.log("handel click search btn")
+
+        const {url}= this.props.app
+        this.props.getInfoVideo(url,[])
+
     }
 
 
@@ -23,7 +30,7 @@ export default class AreaSearch extends Component {
     }
 
 
-    setUrl
+    
 
     render() {
 
@@ -39,3 +46,20 @@ export default class AreaSearch extends Component {
         )
     }
 }
+
+
+
+
+AreaSearch.propTypes = {
+    getInfoVideo: PropTypes.func.isRequired,
+    app: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+    app: state.app,
+});
+
+export default connect(
+    mapStateToProps,
+    { getInfoVideo }
+)(AreaSearch);

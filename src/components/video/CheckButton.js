@@ -1,24 +1,48 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class CheckButton extends Component {
-    render() {
-        return (
-            <div className="custom-checkbox">
+  constructor() {
+    super();
 
-                <input
-                    name="users[]"
-                    type="checkbox"
-                    className="custom-control-input"
-                    id={`customCheck$`}
-                    value={'val'}
-                    onClick={console.log("cliked")}
-                // checked={this.props.isChecked}
+    this.onClick = this.onClick.bind(this);
+  }
 
-                />
+  onClick() {
+    console.log("is clecked");
+  }
+  render() {
+    const { vidId } = this.props;
+    const { title } = this.props;
 
-                <label className="custom-control-label" htmlFor={`customCheck$`}
-                ></label>
-            </div>
-        )
-    }
+    const { duration_hms } = this.props;
+    const { thumbnail } = this.props;
+
+    const { playlist_index } = this.props;
+
+    return (
+      <div className="custom-checkbox">
+        <input
+          name="videos[]"
+          type="checkbox"
+          className="custom-control-input"
+          id={`customCheck${vidId}`}
+          value={vidId}
+          title={title}
+          duration_hms={duration_hms}
+          thumbnail={thumbnail}
+          playlist_index={
+            typeof playlist_index == "undefined" ? "non" : playlist_index
+          }
+          onClick={(id) => {
+            this.props.handeleCheckButtonClick(id);
+          }}
+        />
+
+        <label
+          className="custom-control-label"
+          htmlFor={`customCheck$`}
+        ></label>
+      </div>
+    );
+  }
 }
