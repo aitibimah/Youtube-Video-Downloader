@@ -16,9 +16,13 @@ A cross-platform GUI for youtube-dl made in Electron, React.js and node.js
   
 ## Getting started
 First, clone the repository using `git clone https://github.com/aitibimah/Youtube-Video-Downloader.git`.
+  <br>
 Then navigate to the directory.
-Run `npm install` in the root directory to install dependencies
+  <br>
+Run `npm install` in the root directory to install dependencies.
+  <br>
 Run `npm start` to start the webpack server.
+  <br>
 Run `npm run electron` to start the development server (Electron).
 
 
